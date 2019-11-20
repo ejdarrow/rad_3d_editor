@@ -21,16 +21,16 @@ var voxelCount = 0;
 var selectedVoxelPosition = 0;
 
 //The length, width, and height of a voxel.
-var voxelXDimension = 10;
+var voxelXDimension = 100;
 
-var voxelYDimension = 10;
+var voxelYDimension = 100;
 
-var voxelZDimension = 10;
+var voxelZDimension = 100;
 
 //The length, width, and height of a voxel's faces.
-var voxelXSideDimension = voxelXDimension / 2;
-var voxelYSideDimension = voxelYDimension / 2;
-var voxelYSideDimension = voxelYDimension / 2;
+//var voxelXSideDimension = voxelXDimension;// / 2;
+//var voxelYSideDimension = voxelYDimension;// / 2;
+//var voxelZSideDimension = voxelZDimension;// / 2;
 
 //The length, width, and height of the stage.
 var cubeDimension = 500;

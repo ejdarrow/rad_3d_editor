@@ -90,39 +90,49 @@ function deleteVoxel(){
 //      Setting the CSS with a JavaScript style property is desired, but I have not had any luck setting the webkit transform property.
 //      The concatenation method works across all browsers regardless.
 function createCursor(){
+	createDimensionalCursor(200, 900, 200);
+}
+
+function createDimensionalCursor(width, height, depth){
 	//Creates the cursor.
 	var cursor = document.createElement('div');
 	cursor.className = 'voxel';
-	var face1 = document.createElement('div');
-	face1.className = "voxelFace";
-	var cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateX(90deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateX(90deg) translateZ(" + voxelXSideDimension + "px);transform: rotateX(90deg) translateZ(" + voxelXSideDimension + "px);";
-	face1.setAttribute('style', cssText);
-	var face2 = document.createElement('div');
-	face2.className = "voxelFace";
-	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: translateZ(" + voxelXSideDimension + "px);-moz-transform: translateZ(" + voxelXSideDimension + "px);transform: translateZ(" + voxelXSideDimension + "px);";
-	face2.setAttribute('style', cssText);
-	var face3 = document.createElement('div');
-	face3.className = "voxelFace";
-	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(90deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateY(90deg) translateZ(" + voxelXSideDimension + "px);transform: rotateY(90deg) translateZ(" + voxelXSideDimension + "px);";
-	face3.setAttribute('style', cssText);
-	var face4 = document.createElement('div');
-	face4.className = "voxelFace";
-	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(180deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateY(180deg) translateZ(" + voxelXSideDimension + "px);transform: rotateY(180deg) translateZ(" + voxelXSideDimension + "px);";
-	face4.setAttribute('style', cssText);
-	var face5 = document.createElement('div');
-	face5.className = "voxelFace";
-	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(-90deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateY(-90deg) translateZ(" + voxelXSideDimension + "px);transform: rotateY(-90deg) translateZ(" + voxelXSideDimension + "px);";
-	face5.setAttribute('style', cssText);
-	var face6 = document.createElement('div');
-	face6.className = "voxelFace";
-	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelXSideDimension + "px);transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelXSideDimension + "px);";
-	face6.setAttribute('style', cssText);
-	cursor.appendChild(face1);
-	cursor.appendChild(face2);
-	cursor.appendChild(face3);
-	cursor.appendChild(face4);
-	cursor.appendChild(face5);
-	cursor.appendChild(face6);
+/*Top[verified]*/
+	var topFace = document.createElement('div');
+	topFace.className = "voxelFace";
+	var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "purple" + ";-webkit-transform: rotateX(90deg) translateZ(" + height / 2 + "px);";
+	topFace.setAttribute('style', cssText);
+/*Front[verified]*/
+	var frontFace = document.createElement('div');
+	frontFace.className = "voxelFace";
+	cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "orange" + ";-webkit-transform: translateZ(" + height / 2 + "px);";
+	frontFace.setAttribute('style', cssText);
+/*Right[verified]*/
+	var rightFace = document.createElement('div');
+	rightFace.className = "voxelFace";
+	cssText = "height:" + height + "px;width:" + height + "px;background-color:" + "yellow" + ";-webkit-transform: rotateY(90deg) translateZ(" + -(height / 2) + "px);";
+	rightFace.setAttribute('style', cssText);
+/*Back[verified]*/
+	var backFace = document.createElement('div');
+	backFace.className = "voxelFace";
+	cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "green" + ";-webkit-transform: rotateY(180deg) translateZ(" + height / 2 + "px);";
+	backFace.setAttribute('style', cssText);
+/*Left*/
+var leftFace = document.createElement('div');
+leftFace.className = "voxelFace";
+cssText = "height:" + height + "px;width:" + height + "px;background-color:" + "blue" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((height / 2) - width) + "px);";
+leftFace.setAttribute('style', cssText);
+/*Bottom[verified]*/
+	var bottomFace = document.createElement('div');
+	bottomFace.className = "voxelFace";
+	cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "red" + ";-webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(" + height / 2 + "px);";
+	bottomFace.setAttribute('style', cssText);
+	cursor.appendChild(topFace);
+	cursor.appendChild(frontFace);
+	cursor.appendChild(rightFace);
+	cursor.appendChild(backFace);
+	cursor.appendChild(leftFace);
+	cursor.appendChild(bottomFace);
 
 	//Sets the cursor's coordinates.
 	cursor.style.paddingLeft = "0px";
@@ -207,7 +217,7 @@ function updateGrid(direction){
 //      Setting the CSS with a JavaScript style property is desired, but I have not had any luck setting the webkit transform property.
 //      The concatenation method works across all browsers regardless.
 function capturePoint(){
-
+/*
 	//Gets the cursor voxel and its coordinates.
 	var cursor = document.getElementById("cursor");
 	var cursorX = cursor.style.paddingLeft;
@@ -281,6 +291,7 @@ function capturePoint(){
 	voxelCount += 1;
 
 	document.getElementById("cube").appendChild(point);	
+*/
 }
 
 //Traverses all voxels on screen, strips their coordinates, and stores their coordinates in a textarea element.
