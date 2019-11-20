@@ -95,27 +95,27 @@ function createCursor(){
 	cursor.className = 'voxel';
 	var face1 = document.createElement('div');
 	face1.className = "voxelFace";
-	var cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateX(90deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateX(90deg) translateZ(" + voxelSideDimension + "px);transform: rotateX(90deg) translateZ(" + voxelSideDimension + "px);";
+	var cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateX(90deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateX(90deg) translateZ(" + voxelXSideDimension + "px);transform: rotateX(90deg) translateZ(" + voxelXSideDimension + "px);";
 	face1.setAttribute('style', cssText);
 	var face2 = document.createElement('div');
 	face2.className = "voxelFace";
-	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: translateZ(" + voxelSideDimension + "px);-moz-transform: translateZ(" + voxelSideDimension + "px);transform: translateZ(" + voxelSideDimension + "px);";
+	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: translateZ(" + voxelXSideDimension + "px);-moz-transform: translateZ(" + voxelXSideDimension + "px);transform: translateZ(" + voxelXSideDimension + "px);";
 	face2.setAttribute('style', cssText);
 	var face3 = document.createElement('div');
 	face3.className = "voxelFace";
-	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(90deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateY(90deg) translateZ(" + voxelSideDimension + "px);transform: rotateY(90deg) translateZ(" + voxelSideDimension + "px);";
+	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(90deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateY(90deg) translateZ(" + voxelXSideDimension + "px);transform: rotateY(90deg) translateZ(" + voxelXSideDimension + "px);";
 	face3.setAttribute('style', cssText);
 	var face4 = document.createElement('div');
 	face4.className = "voxelFace";
-	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(180deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateY(180deg) translateZ(" + voxelSideDimension + "px);transform: rotateY(180deg) translateZ(" + voxelSideDimension + "px);";
+	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(180deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateY(180deg) translateZ(" + voxelXSideDimension + "px);transform: rotateY(180deg) translateZ(" + voxelXSideDimension + "px);";
 	face4.setAttribute('style', cssText);
 	var face5 = document.createElement('div');
 	face5.className = "voxelFace";
-	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(-90deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateY(-90deg) translateZ(" + voxelSideDimension + "px);transform: rotateY(-90deg) translateZ(" + voxelSideDimension + "px);";
+	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(-90deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateY(-90deg) translateZ(" + voxelXSideDimension + "px);transform: rotateY(-90deg) translateZ(" + voxelXSideDimension + "px);";
 	face5.setAttribute('style', cssText);
 	var face6 = document.createElement('div');
 	face6.className = "voxelFace";
-	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelSideDimension + "px);transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelSideDimension + "px);";
+	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelXSideDimension + "px);transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelXSideDimension + "px);";
 	face6.setAttribute('style', cssText);
 	cursor.appendChild(face1);
 	cursor.appendChild(face2);
@@ -165,32 +165,32 @@ function updateGrid(direction){
 	//up, left, down, in, or out translation is made.
 	switch(direction){
 		case 'right':
-			globalCursorX += voxelDimension;
+			globalCursorX += voxelXDimension;
 			cursorX = globalCursorX + "px";
 			//cursorX = cursorX + magnitude + "px";
 			break;
 		case 'up':
-			globalCursorY -= voxelDimension;
+			globalCursorY -= voxelXDimension;
 			cursorY = globalCursorY + "px";
 			//cursorY = cursorY - magnitude + "px";
 			break;
 		case 'left':
-			globalCursorX -= voxelDimension;
+			globalCursorX -= voxelXDimension;
 			cursorX = globalCursorX + "px";
 			//cursorX = cursorX - magnitude + "px";
 			break;
 		case 'down':
-			globalCursorY += voxelDimension;
+			globalCursorY += voxelXDimension;
 			cursorY = globalCursorY + "px";
 			//cursorY = cursorY + magnitude + "px";
 			break;
 		case 'in':
-			globalCursorZ -= voxelDimension;
+			globalCursorZ -= voxelXDimension;
 			cursorZ = globalCursorZ + "px";
 			cursorZ = "translateZ(" + cursorZ + ")";
 			break;
 		case 'out':
-			globalCursorZ += voxelDimension;
+			globalCursorZ += voxelXDimension;
 			cursorZ = globalCursorZ + "px";
 			cursorZ = "translateZ(" + cursorZ + ")";
 			break;
@@ -219,28 +219,41 @@ function capturePoint(){
 	point.className = 'voxel';
 	var face1 = document.createElement('div');
 	face1.className = "voxelFace";
-	var cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateX(90deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateX(90deg) translateZ(" + voxelSideDimension + "px);transform: rotateX(90deg) translateZ(" + voxelSideDimension + "px);";
+
+	//top face of all voxels.
+	var cssText = "background-color:red;height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateX(90deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateX(90deg) translateZ(" + voxelXSideDimension + "px);transform: rotateX(90deg) translateZ(" + voxelXSideDimension + "px);";
 	face1.setAttribute('style', cssText);
+
+	//front face of all voxels.
 	var face2 = document.createElement('div');
 	face2.className = "voxelFace";
-	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: translateZ(" + voxelSideDimension + "px);-moz-transform: translateZ(" + voxelSideDimension + "px);transform: translateZ(" + voxelSideDimension + "px);";
+	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: translateZ(" + voxelXSideDimension + "px);-moz-transform: translateZ(" + voxelXSideDimension + "px);transform: translateZ(" + voxelXSideDimension + "px);";
+	
+    //right face of all voxels.
 	face2.setAttribute('style', cssText);
 	var face3 = document.createElement('div');
 	face3.className = "voxelFace";
-	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(90deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateY(90deg) translateZ(" + voxelSideDimension + "px);transform: rotateY(90deg) translateZ(" + voxelSideDimension + "px);";
+	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(90deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateY(90deg) translateZ(" + voxelXSideDimension + "px);transform: rotateY(90deg) translateZ(" + voxelXSideDimension + "px);";
+	
+	//back face of all voxels.
 	face3.setAttribute('style', cssText);
 	var face4 = document.createElement('div');
 	face4.className = "voxelFace";
-	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(180deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateY(180deg) translateZ(" + voxelSideDimension + "px);transform: rotateY(180deg) translateZ(" + voxelSideDimension + "px);";
+	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(180deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateY(180deg) translateZ(" + voxelXSideDimension + "px);transform: rotateY(180deg) translateZ(" + voxelXSideDimension + "px);";
+	
+	//left face of all voxels.
 	face4.setAttribute('style', cssText);
 	var face5 = document.createElement('div');
 	face5.className = "voxelFace";
-	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(-90deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateY(-90deg) translateZ(" + voxelSideDimension + "px);transform: rotateY(-90deg) translateZ(" + voxelSideDimension + "px);";
+	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(-90deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateY(-90deg) translateZ(" + voxelXSideDimension + "px);transform: rotateY(-90deg) translateZ(" + voxelXSideDimension + "px);";
+	
+	//bottom face of all voxels.
 	face5.setAttribute('style', cssText);
 	var face6 = document.createElement('div');
 	face6.className = "voxelFace";
-	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelSideDimension + "px);transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelSideDimension + "px);";
+	cssText = "height:" + voxelXDimension + "px;width:" + voxelXDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelXSideDimension + "px);-moz-transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelXSideDimension + "px);transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelXSideDimension + "px);";
 	face6.setAttribute('style', cssText);
+
 	point.appendChild(face1);
 	point.appendChild(face2);
 	point.appendChild(face3);

@@ -8,7 +8,7 @@ var globalCursorZ = -245;
 var cursorInterval = 100;
 
 //The background color used for all voxels.
-var voxelColor = "indigo";
+var voxelColor = "cyan";
 
 //z-index property allows voxels to clip through each other.
 var zIndexCount = 0;
@@ -21,10 +21,16 @@ var voxelCount = 0;
 var selectedVoxelPosition = 0;
 
 //The length, width, and height of a voxel.
-var voxelDimension = 5;
+var voxelXDimension = 10;
+
+var voxelYDimension = 10;
+
+var voxelZDimension = 10;
 
 //The length, width, and height of a voxel's faces.
-var voxelSideDimension = voxelDimension / 2;
+var voxelXSideDimension = voxelXDimension / 2;
+var voxelYSideDimension = voxelYDimension / 2;
+var voxelYSideDimension = voxelYDimension / 2;
 
 //The length, width, and height of the stage.
 var cubeDimension = 500;
@@ -35,4 +41,4 @@ var cubeSideDimension = cubeDimension / 2;
 //The default z dimension sets a voxel in the middle of the stage.
 //However, to aid the user, a conventional z dimension is required, that is,
 //set the voxel's start position to the top-left-back of the 3d grid.
-var correctedZCoordinate = -((cubeDimension / 2) - (voxelDimension / 2));
+var correctedZCoordinate = -((cubeDimension / 2) - (voxelXDimension / 2));
