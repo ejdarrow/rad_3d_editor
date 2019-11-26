@@ -350,27 +350,7 @@
 		</div>
 	</body>
 	<script>
-		function randomIntFromInterval(min, max) { // min and max included 
-  			return Math.floor(Math.random() * (max - min + 1) + min);
-		}
-		//A cursor voxel must be created directly after the entire page has finished loading.
-		setTimeout(function(){ createDimensionalCursor(randomIntFromInterval(10,300),randomIntFromInterval(10,300),1); }, 1000);
+		createDimensionalCursor(10, 300);
 	</script>
 	<script src="js/stage.js"></script>
-	<script>
-		//importMesh("{(210,250,70)}");
-		(function theLoop2 (degree) {
-                  //wedge1.setAttribute("stroke-dasharray", "calc(" + i + " * 31.4 / 100) 31.4");
-                  setTimeout(function() {
-					setTimeout(function(){ createDimensionalCursor(randomIntFromInterval(10,300),randomIntFromInterval(10,300),1); }, 1000);
-                    degree -= 1;
-                  });
-                  //<line x1="11" y1="11" x2="18.142" y2="3.858" stroke="white" stroke-width="0.2" stroke-linecap="round" />
-                  setTimeout(function () {
-                      if (degree > -240) {          // If i > 0, keep going
-                          theLoop2(degree);       // Call the loop again, and pass it the current value of i
-                      }
-                  }, 500);
-              })(0);
-	</script>
 </html>

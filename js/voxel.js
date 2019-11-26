@@ -93,7 +93,7 @@ function createCursor(){
 	createDimensionalCursor(200, 900, 200);
 }
 
-function createDimensionalCursor(width, height, depth){
+function createDimensionalCursor(width, height){
 	//Creates the cursor.
 	var cursor = document.createElement('div');
 	cursor.className = 'voxel';
@@ -108,20 +108,20 @@ function createDimensionalCursor(width, height, depth){
 	cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "orange" + ";-webkit-transform: translateZ(" + height / 2 + "px);";
 	frontFace.setAttribute('style', cssText);
 /*Right[verified]*/
-	var rightFace = document.createElement('div');
-	rightFace.className = "voxelFace";
-	cssText = "height:" + height + "px;width:" + height + "px;background-color:" + "yellow" + ";-webkit-transform: rotateY(90deg) translateZ(" + -(height / 2) + "px);";
-	rightFace.setAttribute('style', cssText);
+	var leftFace = document.createElement('div');
+	leftFace.className = "voxelFace";
+	cssText = "height:" + height + "px;width:" + height + "px;background-color:" + "blue" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((height / 2) - width) + "px);";
+	leftFace.setAttribute('style', cssText);
 /*Back[verified]*/
 	var backFace = document.createElement('div');
 	backFace.className = "voxelFace";
 	cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "green" + ";-webkit-transform: rotateY(180deg) translateZ(" + height / 2 + "px);";
 	backFace.setAttribute('style', cssText);
 /*Left*/
-var leftFace = document.createElement('div');
-leftFace.className = "voxelFace";
-cssText = "height:" + height + "px;width:" + height + "px;background-color:" + "blue" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((height / 2) - width) + "px);";
-leftFace.setAttribute('style', cssText);
+	var rightFace = document.createElement('div');
+	rightFace.className = "voxelFace";
+	cssText = "height:" + height + "px;width:" + height + "px;background-color:" + "yellow" + ";-webkit-transform: rotateY(90deg) translateZ(" + -(height / 2) + "px);";
+	rightFace.setAttribute('style', cssText);
 /*Bottom[verified]*/
 	var bottomFace = document.createElement('div');
 	bottomFace.className = "voxelFace";
