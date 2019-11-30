@@ -93,39 +93,39 @@ function createCursor(){
 	createDimensionalCursor(200, 900, 200);
 }
 
-function createDimensionalCursor(width, height){
+function createDimensionalCursor(width, height, depth){
 	//Creates the cursor.
 	var cursor = document.createElement('div');
 	cursor.className = 'voxel';
 /*Top[verified]*/
 	var topFace = document.createElement('div');
 	topFace.className = "voxelFace";
-	var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "purple" + ";-webkit-transform: rotateX(90deg) translateZ(" + height / 2 + "px);";
+	var cssText = "height:" + depth + "px;width:" + width + "px;background-color:" + "purple" + ";-webkit-transform: rotateX(90deg) translateZ(" + depth / 2 + "px)";
 	topFace.setAttribute('style', cssText);
 /*Front[verified]*/
 	var frontFace = document.createElement('div');
 	frontFace.className = "voxelFace";
-	cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "orange" + ";-webkit-transform: translateZ(" + height / 2 + "px);";
+	cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "orange" + ";-webkit-transform: translateZ(" + depth / 2 + "px);";
 	frontFace.setAttribute('style', cssText);
 /*Right[verified]*/
 	var leftFace = document.createElement('div');
 	leftFace.className = "voxelFace";
-	cssText = "height:" + height + "px;width:" + height + "px;background-color:" + "blue" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((height / 2) - width) + "px);";
+	cssText = "height:" + height + "px;width:" + depth + "px;background-color:" + "blue" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((depth / 2) - width) + "px);";
 	leftFace.setAttribute('style', cssText);
 /*Back[verified]*/
 	var backFace = document.createElement('div');
 	backFace.className = "voxelFace";
-	cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "green" + ";-webkit-transform: rotateY(180deg) translateZ(" + height / 2 + "px);";
+	cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "green" + ";-webkit-transform: rotateY(180deg) translateZ(" + depth / 2 + "px);";
 	backFace.setAttribute('style', cssText);
 /*Left*/
 	var rightFace = document.createElement('div');
 	rightFace.className = "voxelFace";
-	cssText = "height:" + height + "px;width:" + height + "px;background-color:" + "yellow" + ";-webkit-transform: rotateY(90deg) translateZ(" + -(height / 2) + "px);";
+	cssText = "height:" + height + "px;width:" + depth + "px;background-color:" + "yellow" + ";-webkit-transform: rotateY(90deg) translateZ(" + -(depth / 2) + "px);";
 	rightFace.setAttribute('style', cssText);
 /*Bottom[verified]*/
 	var bottomFace = document.createElement('div');
 	bottomFace.className = "voxelFace";
-	cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "red" + ";-webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(" + height / 2 + "px);";
+    cssText = "height:" + depth + "px;width:" + width + "px;background-color:" + "red" + ";-webkit-transform: rotateX(90deg) translateZ(" + -(height - (depth / 2)) + "px)";
 	bottomFace.setAttribute('style', cssText);
 	cursor.appendChild(topFace);
 	cursor.appendChild(frontFace);

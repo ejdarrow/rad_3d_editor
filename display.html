@@ -350,7 +350,23 @@
 		</div>
 	</body>
 	<script>
-		createDimensionalCursor(10, 300);
+		createDimensionalCursor(100, 200, 300);
+/*
+		var min = 10;
+		var max = 300;
+		function randomInRange(tempMin, tempMax){
+			return Math.floor(Math.random() * tempMax) + tempMin;
+		}
+		(function theLoop (i) {
+			createDimensionalCursor(randomInRange(min, max), randomInRange(min, max), randomInRange(10, 500));
+			setTimeout(function () {
+				if (i < 20) {          // If i > 0, keep going
+					i = i + 1;
+					theLoop(i);       // Call the loop again, and pass it the current value of i
+				}
+			}, 1000);
+		})(1);
+*/
 	</script>
 	<script src="js/stage.js"></script>
 </html>
