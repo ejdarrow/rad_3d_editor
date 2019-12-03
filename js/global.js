@@ -21,11 +21,11 @@ var voxelCount = 0;
 var selectedVoxelPosition = 0;
 
 //The length, width, and height of a voxel.
-var cursorXDimension = 0;
+var cursorXDimension = 100;
 
-var cursorYDimension = 0;
+var cursorYDimension = 100;
 
-var cursorZDimension = 0;
+var cursorZDimension = 100;
 
 //The length, width, and height of a voxel's faces.
 //var voxelXSideDimension = voxelXDimension;// / 2;
@@ -41,4 +41,4 @@ var cubeSideDimension = cubeDimension / 2;
 //The default z dimension sets a voxel in the middle of the stage.
 //However, to aid the user, a conventional z dimension is required, that is,
 //set the voxel's start position to the top-left-back of the 3d grid.
-var correctedZCoordinate = -((cubeDimension / 2) - (voxelXDimension / 2));
+var correctedZCoordinate = -((cubeDimension / 2) - (cursorXDimension / 2));

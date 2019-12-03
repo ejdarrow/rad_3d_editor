@@ -89,6 +89,61 @@ function rotateByArrowKeys(event) {
 	document.getElementById('cube').style[prop] = "rotateX(" + thetaX + "deg) rotateY(" + thetaY + "deg)";
 }
 
+//A general function for handling key down events.
+function keyEvent(event) {
+	var frontFace = document.getElementById("frontFace");
+
+	switch(event.keyCode) {
+		case 37: // left
+			var width = frontFace.style.width;
+			console.log(width)
+			width = width.substring(0, width.length - 2);
+			console.log(width)
+			width = parseInt(width);
+			width -= 1;
+			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
+			var cssText = "height:" + 100 + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
+			document.getElementById("frontFace").setAttribute("style", cssText);
+			break;
+
+		case 38: // up
+			var height = frontFace.style.height;
+			console.log(height)
+			height = height.substring(0, height.length - 2);
+			console.log(height)
+			height = parseInt(height);
+			height -= 1;
+			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
+			var cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
+			document.getElementById("frontFace").setAttribute("style", cssText);
+			break;
+
+		case 39: // right
+			var width = frontFace.style.width;
+			console.log(width)
+			width = width.substring(0, width.length - 2);
+			console.log(width)
+			width = parseInt(width);
+			width += 1;
+			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
+			var cssText = "height:" + 100 + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
+			document.getElementById("frontFace").setAttribute("style", cssText);
+			break;
+
+		case 40: // down
+			var height = frontFace.style.height;
+			console.log(height)
+			height = height.substring(0, height.length - 2);
+			console.log(height)
+			height = parseInt(height);
+			height += 1;
+			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
+			var cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
+			document.getElementById("frontFace").setAttribute("style", cssText);
+			break;
+	};
+}
+
 //Rotates the cube 90 degrees in a specified direction.
 function rotateOrthogonally(direction){
 	if(direction == "left"){
