@@ -90,7 +90,57 @@ function deleteVoxel(){
 //      Setting the CSS with a JavaScript style property is desired, but I have not had any luck setting the webkit transform property.
 //      The concatenation method works across all browsers regardless.
 function createCursor(){
-	createDimensionalCursor(200, 900, 200);
+	//Creates the cursor.
+	var cursor = document.createElement('div');
+	cursor.className = 'voxel';
+	var face1 = document.createElement('div');
+	face1.className = "voxelFace";
+	var cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateX(90deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateX(90deg) translateZ(" + voxelSideDimension + "px);transform: rotateX(90deg) translateZ(" + voxelSideDimension + "px);";
+	face1.setAttribute('style', cssText);
+	var face2 = document.createElement('div');
+	face2.className = "voxelFace";
+	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: translateZ(" + voxelSideDimension + "px);-moz-transform: translateZ(" + voxelSideDimension + "px);transform: translateZ(" + voxelSideDimension + "px);";
+	face2.setAttribute('style', cssText);
+	var face3 = document.createElement('div');
+	face3.className = "voxelFace";
+	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(90deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateY(90deg) translateZ(" + voxelSideDimension + "px);transform: rotateY(90deg) translateZ(" + voxelSideDimension + "px);";
+	face3.setAttribute('style', cssText);
+	var face4 = document.createElement('div');
+	face4.className = "voxelFace";
+	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(180deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateY(180deg) translateZ(" + voxelSideDimension + "px);transform: rotateY(180deg) translateZ(" + voxelSideDimension + "px);";
+	face4.setAttribute('style', cssText);
+	var face5 = document.createElement('div');
+	face5.className = "voxelFace";
+	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateY(-90deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateY(-90deg) translateZ(" + voxelSideDimension + "px);transform: rotateY(-90deg) translateZ(" + voxelSideDimension + "px);";
+	face5.setAttribute('style', cssText);
+	var face6 = document.createElement('div');
+	face6.className = "voxelFace";
+	cssText = "height:" + voxelDimension + "px;width:" + voxelDimension + "px;background-color:" + voxelColor + ";-webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelSideDimension + "px);-moz-transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelSideDimension + "px);transform: rotateX(-90deg) rotate(180deg) translateZ(" + voxelSideDimension + "px);";
+	face6.setAttribute('style', cssText);
+	cursor.appendChild(face1);
+	cursor.appendChild(face2);
+	cursor.appendChild(face3);
+	cursor.appendChild(face4);
+	cursor.appendChild(face5);
+	cursor.appendChild(face6);
+
+	//Sets the cursor's coordinates.
+	cursor.style.paddingLeft = "0px";
+	cursor.style.paddingTop = "0px";
+	cursor.style.transform = "translateZ(" + correctedZCoordinate + "px)";
+
+	//A z-index is assigned to the cursor so that
+	//other voxels can clip through the cursor.
+	cursor.style.zIndex = "0";
+	cursor.style.position = "absolute";
+
+	//Assigns the cursor's id to the new voxel so that the new 
+	//voxel becomes the new cursor.
+	//The old cursor is assigned a numeric value starting at zero.
+	//As new points are added, the numeric IDs will increase.
+	cursor.id = "cursor"
+
+	document.getElementById("cube").appendChild(cursor);
 }
 
 function createDimensionalCursor(width, height, depth){
@@ -155,7 +205,6 @@ function createDimensionalCursor(width, height, depth){
 
 //Moves the cursor voxel right, up, left, down, in or out.
 function updateGrid(direction){
-
 	//Gets the cursor voxel and its coordinates.
 	var cursor = document.getElementById("cursor");
 	var cursorX = cursor.style.paddingLeft;
@@ -175,32 +224,32 @@ function updateGrid(direction){
 	//up, left, down, in, or out translation is made.
 	switch(direction){
 		case 'right':
-			globalCursorX += voxelXDimension;
+			globalCursorX += 1;
 			cursorX = globalCursorX + "px";
 			//cursorX = cursorX + magnitude + "px";
 			break;
 		case 'up':
-			globalCursorY -= voxelXDimension;
+			globalCursorY -= 1
 			cursorY = globalCursorY + "px";
 			//cursorY = cursorY - magnitude + "px";
 			break;
 		case 'left':
-			globalCursorX -= voxelXDimension;
+			globalCursorX -= 1;
 			cursorX = globalCursorX + "px";
 			//cursorX = cursorX - magnitude + "px";
 			break;
 		case 'down':
-			globalCursorY += voxelXDimension;
+			globalCursorY += 1;
 			cursorY = globalCursorY + "px";
 			//cursorY = cursorY + magnitude + "px";
 			break;
 		case 'in':
-			globalCursorZ -= voxelXDimension;
+			globalCursorZ -= 1;
 			cursorZ = globalCursorZ + "px";
 			cursorZ = "translateZ(" + cursorZ + ")";
 			break;
 		case 'out':
-			globalCursorZ += voxelXDimension;
+			globalCursorZ += 1;
 			cursorZ = globalCursorZ + "px";
 			cursorZ = "translateZ(" + cursorZ + ")";
 			break;
