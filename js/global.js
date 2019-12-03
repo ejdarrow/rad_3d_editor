@@ -21,11 +21,11 @@ var voxelCount = 0;
 var selectedVoxelPosition = 0;
 
 //The length, width, and height of a voxel.
-var voxelXDimension = 100;
+var cursorXDimension = 0;
 
-var voxelYDimension = 100;
+var cursorYDimension = 0;
 
-var voxelZDimension = 100;
+var cursorZDimension = 0;
 
 //The length, width, and height of a voxel's faces.
 //var voxelXSideDimension = voxelXDimension;// / 2;
