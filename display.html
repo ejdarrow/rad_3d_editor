@@ -754,25 +754,48 @@
 		</div>
 	</body>
 	<script>
-		window.onload = function(){
-            createDimensionalCursor(100, 100, 100);
-		}
-/*
-		var min = 10;
-		var max = 300;
-		function randomInRange(tempMin, tempMax){
-			return Math.floor(Math.random() * tempMax) + tempMin;
-		}
+	window.onload = function(){
+		createDimensionalCursor(100, 100, 100);
+	}
+
+	var min = 10;
+	var max = 300;
+	function randomInRange(tempMin, tempMax){
+		return Math.floor(Math.random() * tempMax) + tempMin;
+	}
+	(function theLoop2 (k) {
 		(function theLoop (i) {
-			createDimensionalCursor(randomInRange(min, max), randomInRange(min, max), randomInRange(10, 500));
+			var childDivs = document.getElementsByClassName("grid")[0].getElementsByTagName('div');
+			for(j = 0; j < childDivs.length; j++ )
+			{
+				var childDiv = childDivs[j];
+				childDiv.setAttribute("style", "background-image: url('css/images/grid_cells/" + i + ".png');");
+			}
 			setTimeout(function () {
 				if (i < 20) {          // If i > 0, keep going
 					i = i + 1;
 					theLoop(i);       // Call the loop again, and pass it the current value of i
 				}
+			}, 50);
+		})(1);
+		setTimeout(function () {
+			if (k < 200) {          // If i > 0, keep going
+				k = k + 1;
+				theLoop2(k);       // Call the loop again, and pass it the current value of i
+			}
+		}, 1000);
+	})(1);
+
+		(function theLoop3 (i) {
+			createDimensionalCursor(randomInRange(min, max), randomInRange(min, max), randomInRange(10, 500));
+			setTimeout(function () {
+				if (i < 20) {          // If i > 0, keep going
+					i = i + 1;
+					theLoop3(i);       // Call the loop again, and pass it the current value of i
+				}
 			}, 1000);
 		})(1);
-*/
+
 	</script>
 	<script src="js/stage.js"></script>
 </html>
