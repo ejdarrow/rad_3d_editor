@@ -96,49 +96,53 @@ function keyEvent(event) {
 	switch(event.keyCode) {
 		case 37: // left
 			var width = frontFace.style.width;
-			console.log(width)
+			var height = frontFace.style.height;
 			width = width.substring(0, width.length - 2);
-			console.log(width)
 			width = parseInt(width);
 			width -= 1;
+			height = height.substring(0, height.length - 2);
+			height = parseInt(height);
 			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
-			var cssText = "height:" + 100 + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
+			var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
 			document.getElementById("frontFace").setAttribute("style", cssText);
 			break;
 
 		case 38: // up
 			var height = frontFace.style.height;
-			console.log(height)
+			var width = frontFace.style.width;
 			height = height.substring(0, height.length - 2);
-			console.log(height)
 			height = parseInt(height);
 			height -= 1;
+			width = width.substring(0, width.length - 2);
+			width = parseInt(width);
 			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
-			var cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
+			var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
 			document.getElementById("frontFace").setAttribute("style", cssText);
 			break;
 
 		case 39: // right
 			var width = frontFace.style.width;
-			console.log(width)
+			var height = frontFace.style.height;
 			width = width.substring(0, width.length - 2);
-			console.log(width)
 			width = parseInt(width);
 			width += 1;
+			height = height.substring(0, height.length - 2);
+			height = parseInt(height);
 			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
-			var cssText = "height:" + 100 + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
+			var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
 			document.getElementById("frontFace").setAttribute("style", cssText);
 			break;
 
 		case 40: // down
 			var height = frontFace.style.height;
-			console.log(height)
+			var width = frontFace.style.width;
 			height = height.substring(0, height.length - 2);
-			console.log(height)
 			height = parseInt(height);
 			height += 1;
+			width = width.substring(0, width.length - 2);
+			width = parseInt(width);
 			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
-			var cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
+			var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
 			document.getElementById("frontFace").setAttribute("style", cssText);
 			break;
 	};
