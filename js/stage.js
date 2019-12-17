@@ -92,6 +92,9 @@ function rotateByArrowKeys(event) {
 //A general function for handling key down events.
 function keyEvent(event) {
 	var frontFace = document.getElementById("frontFace");
+	var rightFace = document.getElementById("rightFace");
+
+	i = 1;
 
 	switch(event.keyCode) {
 		case 37: // left
@@ -123,6 +126,8 @@ function keyEvent(event) {
 		case 39: // right
 			var width = frontFace.style.width;
 			var height = frontFace.style.height;
+			var rightFaceDepth = rightFace.style.transform;
+			console.log(rightFaceDepth);
 			width = width.substring(0, width.length - 2);
 			width = parseInt(width);
 			width += 1;
@@ -131,6 +136,9 @@ function keyEvent(event) {
 			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
 			var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
 			document.getElementById("frontFace").setAttribute("style", cssText);
+			cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((100 / 2) - width) + "px);";
+			i++;
+			document.getElementById("rightFace").setAttribute("style", cssText);
 			break;
 
 		case 40: // down

@@ -108,6 +108,7 @@ function createDimensionalCursor(width, height, depth){
 	var leftFace = document.createElement('div');
 	leftFace.className = "voxelFace";
 	cssText = "height:" + height + "px;width:" + depth + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((depth / 2) - width) + "px);";
+	leftFace.id = "rightFace";
 	leftFace.setAttribute('style', cssText);
 /*Back[verified]*/
 	var backFace = document.createElement('div');
