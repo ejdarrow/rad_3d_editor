@@ -97,6 +97,7 @@ function createDimensionalCursor(width, height, depth){
 	var topFace = document.createElement('div');
 	topFace.className = "voxelFace";
 	var cssText = "height:" + depth + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateX(90deg) translateZ(" + depth / 2 + "px)";
+	topFace.id = "topFace";
 	topFace.setAttribute('style', cssText);
 /*Front[verified]*/
 	var frontFace = document.createElement('div');
@@ -114,16 +115,19 @@ function createDimensionalCursor(width, height, depth){
 	var backFace = document.createElement('div');
 	backFace.className = "voxelFace";
 	cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(180deg) translateZ(" + depth / 2 + "px);";
+	backFace.id = "backFace";
 	backFace.setAttribute('style', cssText);
 /*Left*/
 	var rightFace = document.createElement('div');
 	rightFace.className = "voxelFace";
 	cssText = "height:" + height + "px;width:" + depth + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(90deg) translateZ(" + -(depth / 2) + "px);";
+	rightFace.id = "leftFace";
 	rightFace.setAttribute('style', cssText);
 /*Bottom[verified]*/
 	var bottomFace = document.createElement('div');
 	bottomFace.className = "voxelFace";
     cssText = "height:" + depth + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateX(90deg) translateZ(" + -(height - (depth / 2)) + "px)";
+	bottomFace.id = "bottomFace";
 	bottomFace.setAttribute('style', cssText);
 	cursor.appendChild(topFace);
 	cursor.appendChild(frontFace);
