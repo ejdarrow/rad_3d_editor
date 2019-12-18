@@ -11,6 +11,8 @@ function updateGridOnMouseUp(){
   window.clearInterval(timer);
 }
 
+var firstCursorCreated = false;
+
 //Resets the stage to its original orientation.
 //In order for the stage to be reset, a page redirect is necessary and all point 
 //data must be placed in the query string to be read by the page upon refresh.
@@ -150,7 +152,12 @@ function createDimensionalCursor(width, height, depth){
 	//voxel becomes the new cursor.
 	//The old cursor is assigned a numeric value starting at zero.
 	//As new points are added, the numeric IDs will increase.
+	if(firstCursorCreated){
+		var oldCursor = document.getElementById("cursor");
+	    oldCursor.parentNode.removeChild(oldCursor);
+    }
 	cursor.id = "cursor"
+	firstCursorCreated = true;
 
 	document.getElementById("cube").appendChild(cursor);
 

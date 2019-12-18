@@ -89,109 +89,41 @@ function rotateByArrowKeys(event) {
 	document.getElementById('cube').style[prop] = "rotateX(" + thetaX + "deg) rotateY(" + thetaY + "deg)";
 }
 
+var u = 100;
+var v = 100;
+var w = 100;
+
 //A general function for handling key down events.
 function keyEvent(event) {
-	var frontFace = document.getElementById("frontFace");
-	var rightFace = document.getElementById("rightFace");
-
-	i = 1;
-
 	switch(event.keyCode) {
-		case 37: // left
-			var width = frontFace.style.width;
-			var height = frontFace.style.height;
-			var backFaceDepth = backFace.style.transform;
-			var topFaceDepth = topFace.style.transform;
-			var bottomFaceDepth = bottomFace.style.transform;
-			width = width.substring(0, width.length - 2);
-			width = parseInt(width);
-			width -= 1;
-			height = height.substring(0, height.length - 2);
-			height = parseInt(height);
-			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
-			var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
-			document.getElementById("frontFace").setAttribute("style", cssText);
-			cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: " + backFaceDepth + ";";
-			document.getElementById("backFace").setAttribute("style", cssText);
-			cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((100 / 2) - width) + "px);";
-			document.getElementById("rightFace").setAttribute("style", cssText);
-			cssText = "height:" + 100 + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: " + topFaceDepth + ";";
-			topFace.setAttribute('style', cssText);
-			cssText = "height:" + 100 + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: " + bottomFaceDepth + ";";
-			bottomFace.setAttribute('style', cssText);
+		case 65: // left
+			u--;
+			createDimensionalCursor(u, v, w);
 			break;
 
-		case 38: // up
-			var height = frontFace.style.height;
-			var width = frontFace.style.width;
-			var backFaceDepth = backFace.style.transform;
-			var leftFaceDepth = leftFace.style.transform;
-			console.log(backFaceDepth);
-			height = height.substring(0, height.length - 2);
-			height = parseInt(height);
-			height -= 1;
-			width = width.substring(0, width.length - 2);
-			width = parseInt(width);
-			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
-			var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
-			document.getElementById("frontFace").setAttribute("style", cssText);
-			cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: " + backFaceDepth + ";";
-			document.getElementById("backFace").setAttribute("style", cssText);
-			cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((100 / 2) - width) + "px);";
-			document.getElementById("rightFace").setAttribute("style", cssText);
-			cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: " + leftFaceDepth + ";";
-			document.getElementById("leftFace").setAttribute("style", cssText);
-			cssText = "height:" + 100 + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateX(90deg) translateZ(" + -(height - (100 / 2)) + "px);";
-			bottomFace.setAttribute('style', cssText);
+		case 87: // up
+			v--;
+			createDimensionalCursor(u, v, w);
 			break;
 
-		case 39: // right
-			var width = frontFace.style.width;
-			var height = frontFace.style.height;
-			var rightFaceDepth = rightFace.style.transform;
-			var backFaceDepth = backFace.style.transform;
-			var topFaceDepth = topFace.style.transform;
-			var bottomFaceDepth = bottomFace.style.transform;
-			console.log(topFaceDepth);
-			width = width.substring(0, width.length - 2);
-			width = parseInt(width);
-			width += 1;
-			height = height.substring(0, height.length - 2);
-			height = parseInt(height);
-			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
-			var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
-			document.getElementById("frontFace").setAttribute("style", cssText);
-			cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: " + backFaceDepth + ";";
-			document.getElementById("backFace").setAttribute("style", cssText);
-			cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((100 / 2) - width) + "px);";
-			document.getElementById("rightFace").setAttribute("style", cssText);
-			cssText = "height:" + 100 + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: " + topFaceDepth + ";";
-			topFace.setAttribute('style', cssText);
-			cssText = "height:" + 100 + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: " + bottomFaceDepth + ";";
-			bottomFace.setAttribute('style', cssText);
+		case 68: // right
+			u++;
+			createDimensionalCursor(u, v, w);
 			break;
 
-		case 40: // down
-			var height = frontFace.style.height;
-			var width = frontFace.style.width;
-			var backFaceDepth = backFace.style.transform;
-			var leftFaceDepth = leftFace.style.transform;
-			height = height.substring(0, height.length - 2);
-			height = parseInt(height);
-			height += 1;
-			width = width.substring(0, width.length - 2);
-			width = parseInt(width);
-			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
-			var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
-			document.getElementById("frontFace").setAttribute("style", cssText);
-			cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: " + backFaceDepth + ";";
-			document.getElementById("backFace").setAttribute("style", cssText);
-			cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((100 / 2) - width) + "px);";
-			document.getElementById("rightFace").setAttribute("style", cssText);
-			cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: " + leftFaceDepth + ";";
-			document.getElementById("leftFace").setAttribute("style", cssText);
-			cssText = "height:" + 100 + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateX(90deg) translateZ(" + -(height - (100 / 2)) + "px);";
-			bottomFace.setAttribute('style', cssText);
+		case 83: // down
+			v++;
+			createDimensionalCursor(u, v, w);
+			break;
+
+		case 69: // in
+			w++;
+			createDimensionalCursor(u, v, w);
+			break;
+
+		case 81: // out
+			w--;
+			createDimensionalCursor(u, v, w);
 			break;
 	};
 }
