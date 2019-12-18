@@ -108,6 +108,8 @@ function keyEvent(event) {
 			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
 			var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
 			document.getElementById("frontFace").setAttribute("style", cssText);
+			cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((100 / 2) - width) + "px);";
+			document.getElementById("rightFace").setAttribute("style", cssText);
 			break;
 
 		case 38: // up
@@ -121,6 +123,8 @@ function keyEvent(event) {
 			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
 			var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
 			document.getElementById("frontFace").setAttribute("style", cssText);
+			cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((100 / 2) - width) + "px);";
+			document.getElementById("rightFace").setAttribute("style", cssText);
 			break;
 
 		case 39: // right
@@ -137,7 +141,6 @@ function keyEvent(event) {
 			var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
 			document.getElementById("frontFace").setAttribute("style", cssText);
 			cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((100 / 2) - width) + "px);";
-			i++;
 			document.getElementById("rightFace").setAttribute("style", cssText);
 			break;
 
@@ -152,6 +155,8 @@ function keyEvent(event) {
 			//Sets the cursor's x, y, and z coordinates to the newly calculated coordinates.
 			var cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.5);" + ";-webkit-transform: translateZ(" + 100 / 2 + "px);";
 			document.getElementById("frontFace").setAttribute("style", cssText);
+			cssText = "height:" + height + "px;width:" + 100 + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((100 / 2) - width) + "px);";
+			document.getElementById("rightFace").setAttribute("style", cssText);
 			break;
 	};
 }
