@@ -156,10 +156,101 @@ function createDimensionalCursor(width, height, depth){
 		var oldCursor = document.getElementById("cursor");
 	    oldCursor.parentNode.removeChild(oldCursor);
     }
-	cursor.id = "cursor"
+	cursor.id = "cursor";
 	firstCursorCreated = true;
 
 	document.getElementById("cube").appendChild(cursor);
+
+	//store the dimensional cursor's coordinates for the next shape.
+	cursorXDimension = width;
+	cursorYDimension = height;
+	cursorZDimension = depth;
+}
+
+//Creates the initial cursor voxel.
+//NOTE: The following sets the voxel's CSS with concatenated JavaScript strings.
+//      Setting the CSS with a JavaScript style property is desired, but I have not had any luck setting the webkit transform property.
+//      The concatenation method works across all browsers regardless.
+function resizePrism(width, height, depth){
+	//Creates the cursor.
+	var cursor = document.getElementById("cursor");
+	var cursorX = cursor.style.paddingLeft;
+	var cursorY = cursor.style.paddingTop;
+	var cursorZ = cursor.style.transform;
+
+	//Creates a new voxel.
+	var point = document.createElement('div');
+	point.className = 'voxel';
+	var face1 = document.createElement('div');
+	face1.className = "voxelFace";
+
+	cursor.className = 'voxel';
+/*Top[verified]*/
+	var topFace = document.createElement('div');
+	topFace.className = "voxelFace";
+	var cssText = "height:" + depth + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateX(90deg) translateZ(" + depth / 2 + "px)";
+	topFace.id = "topFace";
+	topFace.setAttribute('style', cssText);
+/*Front[verified]*/
+	var frontFace = document.createElement('div');
+	frontFace.className = "voxelFace";
+	cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: translateZ(" + depth / 2 + "px);";
+	frontFace.id = "frontFace";
+	frontFace.setAttribute('style', cssText);
+/*Right[verified]*/
+	var leftFace = document.createElement('div');
+	leftFace.className = "voxelFace";
+	cssText = "height:" + height + "px;width:" + depth + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(90deg) translateZ(" + -((depth / 2) - width) + "px);";
+	leftFace.id = "rightFace";
+	leftFace.setAttribute('style', cssText);
+/*Back[verified]*/
+	var backFace = document.createElement('div');
+	backFace.className = "voxelFace";
+	cssText = "height:" + height + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(180deg) translateZ(" + depth / 2 + "px);";
+	backFace.id = "backFace";
+	backFace.setAttribute('style', cssText);
+/*Left*/
+	var rightFace = document.createElement('div');
+	rightFace.className = "voxelFace";
+	cssText = "height:" + height + "px;width:" + depth + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateY(90deg) translateZ(" + -(depth / 2) + "px);";
+	rightFace.id = "leftFace";
+	rightFace.setAttribute('style', cssText);
+/*Bottom[verified]*/
+	var bottomFace = document.createElement('div');
+	bottomFace.className = "voxelFace";
+    cssText = "height:" + depth + "px;width:" + width + "px;background-color:" + "rgba(0, 0, 255, 0.25);" + ";-webkit-transform: rotateX(90deg) translateZ(" + -(height - (depth / 2)) + "px)";
+	bottomFace.id = "bottomFace";
+	bottomFace.setAttribute('style', cssText);
+	point.appendChild(topFace);
+	point.appendChild(frontFace);
+	point.appendChild(rightFace);
+	point.appendChild(backFace);
+	point.appendChild(leftFace);
+	point.appendChild(bottomFace);
+
+	//Assigns the cursor's coordinates to the new voxel.
+	point.style.paddingLeft = cursorX;
+	point.style.paddingTop = cursorY;
+	point.style.transform = cursorZ;
+
+	//A new z-index is assigned to the new voxel so that the 
+	//voxels may overlap (or clip into) each other on the z axis.
+	zIndexCount -= 1;
+	point.style.zIndex = zIndexCount + "";
+	point.style.position = "absolute";
+
+	//Assigns the cursor's id to the new voxel so that the new 
+	//voxel becomes the new cursor.
+	//The old cursor is assigned a numeric value starting at zero.
+	//As new points are added, the numeric IDs will increase.
+	if(firstCursorCreated){
+		var oldCursor = document.getElementById("cursor");
+	    oldCursor.parentNode.removeChild(oldCursor);
+    }
+	point.id = "cursor";
+	firstCursorCreated = true;
+
+	document.getElementById("cube").appendChild(point);
 
 	//store the dimensional cursor's coordinates for the next shape.
 	cursorXDimension = width;

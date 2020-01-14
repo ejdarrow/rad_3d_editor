@@ -98,32 +98,32 @@ function keyEvent(event) {
 	switch(event.keyCode) {
 		case 65: // left
 			u--;
-			createDimensionalCursor(u, v, w);
+			resizePrism(u, v, w);
 			break;
 
 		case 87: // up
 			v--;
-			createDimensionalCursor(u, v, w);
+			resizePrism(u, v, w);
 			break;
 
 		case 68: // right
 			u++;
-			createDimensionalCursor(u, v, w);
+			resizePrism(u, v, w);
 			break;
 
 		case 83: // down
 			v++;
-			createDimensionalCursor(u, v, w);
+			resizePrism(u, v, w);
 			break;
 
 		case 69: // in
 			w++;
-			createDimensionalCursor(u, v, w);
+			resizePrism(u, v, w);
 			break;
 
 		case 81: // out
 			w--;
-			createDimensionalCursor(u, v, w);
+			resizePrism(u, v, w);
 			break;
 	};
 }
