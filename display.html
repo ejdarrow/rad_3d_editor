@@ -53,11 +53,11 @@
 	</body>
 	<script type="module" src="js/stage.js"></script>
 	<script type="module" >
-	import {createDimensionalCursor} from './js/voxel.js';
-	import {rotateByMouse} from './js/stage.js';
-	import {gridInstance} from './js/stage.js';
+	import { drawBox } from './js/voxel.js';
+	import {rotateByMouse, gridInstance} from './js/stage.js';
 	window.onload = function(){
-		createDimensionalCursor(100, 100, 100, gridInstance);
+		
+		drawBox(gridInstance);
 	}
 	$("#cube").click(rotateByMouse);
 	</script>
