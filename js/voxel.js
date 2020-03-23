@@ -1,3 +1,4 @@
+
 //Timer object used between voxel translation calls.
 var timer = null;
 
@@ -91,7 +92,7 @@ function deleteVoxel(){
 //NOTE: The following sets the voxel's CSS with concatenated JavaScript strings.
 //      Setting the CSS with a JavaScript style property is desired, but I have not had any luck setting the webkit transform property.
 //      The concatenation method works across all browsers regardless.
-function createDimensionalCursor(width, height, depth){
+export function createDimensionalCursor(width, height, depth, gridInstance){
 	//Creates the cursor.
 	var cursor = document.createElement('div');
 	cursor.className = 'voxel';
@@ -141,7 +142,7 @@ function createDimensionalCursor(width, height, depth){
 	//Sets the cursor's coordinates.
 	cursor.style.paddingLeft = "0px";
 	cursor.style.paddingTop = "0px";
-	cursor.style.transform = "translateZ(" + correctedZCoordinate + "px)";
+	cursor.style.transform = "translateZ(" + gridInstance.correctedZCoordinate + "px)";
 
 	//A z-index is assigned to the cursor so that
 	//other voxels can clip through the cursor.
@@ -162,9 +163,9 @@ function createDimensionalCursor(width, height, depth){
 	document.getElementById("cube").appendChild(cursor);
 
 	//store the dimensional cursor's coordinates for the next shape.
-	cursorXDimension = width;
-	cursorYDimension = height;
-	cursorZDimension = depth;
+	gridInstance.cursorXDimension = width;
+	gridInstance.cursorYDimension = height;
+	gridInstance.cursorZDimension = depth;
 }
 
 //Creates the initial cursor voxel.

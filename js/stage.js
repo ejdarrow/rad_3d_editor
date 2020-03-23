@@ -1,3 +1,9 @@
+import {GridInstance} from './gridInstance.js';
+
+let gridInstance = new GridInstance();
+
+export {gridInstance};
+
 //Finds the center point of the browser window.
 var originX = document.body.offsetWidth / 2;
 var originY = document.body.offsetHeight / 2;
@@ -10,21 +16,66 @@ var yThetaMultiplier = 10;
 //NOTE: The following sets the grid's CSS with concatenated JavaScript strings.
 //      Setting the CSS with a JavaScript style property is desired, but I have not had any luck setting the webkit transform property.
 //      The concatenation method works across all browsers regardless.
+
 var grid = document.getElementById("cube");
-grid.style.height = cubeDimension + "px";
-grid.style.width = cubeDimension + "px";
-var cssText = "	height: " + cubeDimension + "px;width: " + cubeDimension + "px;-webkit-transform: rotateX(90deg) translateZ(" + cubeSideDimension + "px);-moz-transform: rotateX(90deg) translateZ(" + cubeSideDimension + "px);transform: rotateX(90deg) translateZ(" + cubeSideDimension + "px);";
-document.getElementById("face1").setAttribute('style', cssText);
-cssText = "height: " + cubeDimension + "px;width: " + cubeDimension + "px;-webkit-transform: translateZ(" + cubeSideDimension + "px);-moz-transform: translateZ(" + cubeSideDimension + "px);transform: translateZ(" + cubeSideDimension + "px);";
-document.getElementById("face2").setAttribute('style', cssText);
-cssText = "height: " + cubeDimension + "px;width: " + cubeDimension + "px;-webkit-transform: rotateY(90deg) translateZ(" + cubeSideDimension + "px);-moz-transform: rotateY(90deg) translateZ(" + cubeSideDimension + "px);transform: rotateY(90deg) translateZ(" + cubeSideDimension + "px);";
-document.getElementById("face3").setAttribute('style', cssText);
-cssText = "height: " + cubeDimension + "px;width: " + cubeDimension + "px;-webkit-transform: rotateY(180deg) translateZ(" + cubeSideDimension + "px);-moz-transform: rotateY(180deg) translateZ(" + cubeSideDimension + "px);transform: rotateY(180deg) translateZ(" + cubeSideDimension + "px);";
-document.getElementById("face4").setAttribute('style', cssText);
-cssText = "height: " + cubeDimension + "px;width: " + cubeDimension + "px;-webkit-transform: rotateY(-90deg) translateZ(" + cubeSideDimension + "px);-moz-transform: rotateY(-90deg) translateZ(" + cubeSideDimension + "px);transform: rotateY(-90deg) translateZ(" + cubeSideDimension + "px);";
-document.getElementById("face5").setAttribute('style', cssText);
-cssText = "height: " + cubeDimension + "px;width: " + cubeDimension + "px;-webkit-transform: rotateX(-90deg) rotate(180deg) translateZ(" + cubeSideDimension + "px);-moz-transform: rotateX(-90deg) rotate(180deg) translateZ(" + cubeSideDimension + "px);transform: rotateX(-90deg) rotate(180deg) translateZ(" + cubeSideDimension + "px);";
-document.getElementById("face6").setAttribute('style', cssText);
+
+grid.style.height = gridInstance.cubeDimension + "px";
+
+grid.style.width = gridInstance.cubeDimension + "px";
+
+class TransformedGridFace {
+
+	constructor(gridInstance, faceNum) {
+		this.height = gridInstance.cubeDimension;
+		this.width = gridInstance.cubeDimension;
+		switch (faceNum) {
+			case 1: 
+				this.transform = "rotateX(90deg) translateZ(" + gridInstance.cubeSideDimension + "px)";
+				break;
+			case 2:
+				this.transform = "translateZ("+ gridInstance.cubeSideDimension + "px)";
+				break;
+			case 3:
+				this.transform = "rotateY(90deg) translateZ(" + gridInstance.cubeSideDimension + "px)";
+				break;
+			case 4:
+				this.transform = "rotateY(180deg) translateZ(" + gridInstance.cubeSideDimension + "px)";
+				break;
+			case 5:
+				this.transform = "rotateY(-90deg) translateZ(" + gridInstance.cubeSideDimension + "px)";
+				break;
+			case 6:
+				this.transform = "rotateX(-90deg) rotate(180deg) translateZ(" + gridInstance.cubeSideDimension + "px)";
+				break;
+		}
+	}
+	toCssString() {
+		let cssText = "height: " + this.height + "px;";
+		cssText += "width: " + this.width + "px;";
+		cssText += "-webkit-transform: "+ this.transform + ";";
+		cssText += "-moz-transform: " + this.transform + ";";
+		cssText += "transform: " + this.transform + ";";
+		return cssText;
+	}
+}
+
+document.getElementById("face1").setAttribute('style', new TransformedGridFace(gridInstance, 1).toCssString());
+
+document.getElementById("face2").setAttribute('style', new TransformedGridFace(gridInstance, 2).toCssString());
+
+
+document.getElementById("face3").setAttribute('style', new TransformedGridFace(gridInstance, 3).toCssString());
+
+
+document.getElementById("face4").setAttribute('style', new TransformedGridFace(gridInstance, 4).toCssString());
+
+
+document.getElementById("face5").setAttribute('style', new TransformedGridFace(gridInstance, 5).toCssString());
+
+
+document.getElementById("face6").setAttribute('style', new TransformedGridFace(gridInstance, 6).toCssString());
+
+
 
 //A normalized vector has a magnitude of 1 and can point in any direction on a plane.
 //Mouse coordinates are fed into the parameters as X and Y values, 
@@ -45,18 +96,19 @@ function normalize(coordinate, x, y){
 }
 
 //Rotates the cube when a mouse event is fired.
-function rotateByMouse(event) {
+export function rotateByMouse(event) {
 	//Gets the x and y coordinates of the mouse.
 	var x = event.clientX;
 	var y = event.clientY;
 
 	//The new x and y coordinates of the mouse relative to the center of the browser window.
-	relativeX = x - originX;
-	relativeY = y - originY;
+	
+	gridInstance.relativeX = x - originX;
+	gridInstance.relativeY = y - originY;
 
 	//Newly calculated angles used to rotate the cube.
-	thetaX += normalize("x", relativeX, relativeY) * xThetaMultiplier;
-	thetaY += normalize("y", relativeX, relativeY) * yThetaMultiplier;
+	thetaX += normalize("x", gridInstance.relativeX, gridInstance.relativeY) * xThetaMultiplier;
+	thetaY += normalize("y", gridInstance.relativeX, gridInstance.relativeY) * yThetaMultiplier;
 
 	//Updates the CSS to Rotate the cube.
 	document.getElementById('cube').style[prop] = "rotateX(" + -thetaY + "deg) rotateY(" + thetaX + "deg)";
