@@ -95,6 +95,16 @@ function normalize(coordinate, x, y){
 	return normalized;
 }
 
+export function moveByMouse(event) {
+	var increment = 5;
+	gridInstance.cameraZ += increment * Math.cos(gridInstance.cameraTheta * Math.PI/180);		
+	gridInstance.cameraY += increment * Math.sin(gridInstance.cameraTheta * Math.PI/180);
+	
+	document.getElementById('cube').style[prop] = "translateZ(" + gridInstance.cameraZ +"px)";
+
+}
+
+
 //Rotates the cube when a mouse event is fired.
 export function rotateByMouse(event) {
 	//Gets the x and y coordinates of the mouse.
@@ -112,33 +122,6 @@ export function rotateByMouse(event) {
 
 	//Updates the CSS to Rotate the cube.
 	document.getElementById('cube').style[prop] = "rotateX(" + -thetaY + "deg) rotateY(" + thetaX + "deg)";
-}
-
-//Rotates the cube when a key event is fired.
-//NOTE: the cube is rotated at 90 degree intervals, this is by design, it allows the user to quickly change cube faces.
-function rotateByArrowKeys(event) {
-	switch(event.keyCode) {
-		case 37: // left
-			thetaY -= 90;
-			break;
-
-		case 38: // up
-			thetaX += 90;
-			event.preventDefault();
-			break;
-
-		case 39: // right
-			thetaY += 90;
-			break;
-
-		case 40: // down
-			thetaX -= 90;
-			event.preventDefault();
-			break;
-	};
-
-	//Updates the CSS to Rotate the cube.
-	document.getElementById('cube').style[prop] = "rotateX(" + thetaX + "deg) rotateY(" + thetaY + "deg)";
 }
 
 var u = 100;
@@ -199,11 +182,6 @@ function rotateOrthogonally(direction){
 	document.getElementById('cube').style[prop] = "rotateX(" + thetaX + "deg) rotateY(" + thetaY + "deg)";
 }
 
-//Changes the text and background color of a button element when the element is in focus.
-function buttonFocus(element, backgroundColor, color){
-	element.style.backgroundColor = backgroundColor;
-	element.style.color = color;
-}
 
 //This code is required for the CSS transformation to work.
 var props = 'transform WebkitTransform MozTransform OTransform msTransform'.split(' '), prop, el = document.createElement('div');
@@ -218,15 +196,3 @@ for(var i = 0, l = props.length; i < l; i++) {
 var thetaX = 0;
 var thetaY = 0;
 
-//Gets query string information.
-var queryString = window.location.search;
-var queryStringArray = queryString.split("?voxel_coordinates=");
-var queryCoordinates = queryStringArray[1];
-
-//The import will not work if the user supplies an empty set,
-//or if the query string information does not exist.
-//NOTE: this code always runs upon page load, it is meant to run right 
-//      after a window refresh event fired by the refresh button.
-if(queryCoordinates != "{}" && queryCoordinates != null){
-	importMesh(queryCoordinates);
-}

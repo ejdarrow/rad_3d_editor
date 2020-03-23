@@ -54,11 +54,11 @@
 	<script type="module" src="js/stage.js"></script>
 	<script type="module" >
 	import { drawBox } from './js/voxel.js';
-	import {rotateByMouse, gridInstance} from './js/stage.js';
+	import {moveByMouse, gridInstance} from './js/stage.js';
 	window.onload = function(){
 		
 		drawBox(gridInstance);
 	}
-	$("#cube").click(rotateByMouse);
+	$("#cube").click(moveByMouse);
 	</script>
 </html>

@@ -8,6 +8,12 @@ class GridInstance {
 		this.globalCursorY = 0;
 		this.globalCursorZ = -245;
 
+
+		this.cameraX = 0;
+		this.cameraY = 0;
+		this.cameraZ = 0;
+		this.cameraTheta = 0; //No looking up for now.
+
 		//Controls the amount of time in milliseconds 
 		//between voxel translation function calls.
 		this.cursorInterval = 100;
